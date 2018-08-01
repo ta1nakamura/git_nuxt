@@ -1,0 +1,29 @@
+{
+  "name": "gis_nuxt",
+  "version": "1.0.0",
+  "description": "gis sample for nuxt , express, mongodb",
+  "author": "testuser",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.0.0",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "mongodb": "^2.2.36",
+    "mongoose": "^4.5.9",
+    "nuxt": "^1.0.0",
+    "vuetify": "^0.17.3"
+  },
+  "devDependencies": {
+    "cross-env": "^5.0.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1"
+  }
+}
