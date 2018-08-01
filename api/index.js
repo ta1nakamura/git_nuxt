@@ -1,5 +1,6 @@
 const express = require("express");
 // const aws = require('aws-sdk');
+require('./config/config.js') //config for mongodb,
 const router = express.Router();
 const app = express()
 

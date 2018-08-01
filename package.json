@@ -8,7 +8,8 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "test-api": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha api/**/**.test.js"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.0.0",
@@ -23,7 +24,10 @@
   },
   "devDependencies": {
     "cross-env": "^5.0.1",
+    "expect": "^22.4.3",
+    "mocha": "^3.5.3",
     "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.1"
+    "stylus-loader": "^3.0.1",
+    "supertest": "^2.0.1"
   }
 }
