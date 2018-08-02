@@ -2,6 +2,9 @@
 
 > gis sample for nuxt , express, mongodb
 
+#demo
+- https://gis-nuxt-sample.herokuapp.com/
+
 #ref
 
 - Working with Geospatial support in MongoDB with NodeJS
