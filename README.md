@@ -4,8 +4,12 @@
 
 #ref
 
-Working with Geospatial support in MongoDB with NodeJS
-https://osmangoni.info/posts/nodejs-mongodb-geolocation/
+- Working with Geospatial support in MongoDB with NodeJS
+   - https://osmangoni.info/posts/nodejs-mongodb-geolocation/
+- module: [npm] vue2-google-maps
+   - https://www.npmjs.com/package/vue2-google-maps
+   - https://github.com/xkjyeah/vue-google-maps
+   - https://www.youtube.com/watch?v=2QboO0zuZ2Q 
 
 ## Build Setup
 

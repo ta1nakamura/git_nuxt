@@ -1,7 +1,19 @@
 const pkg = require('./package')
 const bodyParser = require('body-parser')
 const nodeExternals = require('webpack-node-externals')
+/**
+ * Load Env from .envfile
+ */
+// require("dotenv").config(); 
 
+//setBaseURL for Axios
+var env = process.env.NODE_ENV || 'development';
+if (env === 'development' || env === 'test') {
+  var API_URL='http://localhost:3000'
+}
+else{
+  var API_URL=process.env.API_URL
+}
 module.exports = {
   mode: 'universal',
   /**
@@ -44,7 +56,8 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/vuetify'
+    '@/plugins/vuetify',
+    {src:"~plugins/vue2-google-maps.js"}
   ],
 
   /*
@@ -59,6 +72,7 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+    baseURL:API_URL
   },
 
   /*
@@ -69,7 +83,6 @@ module.exports = {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
-      
       if (ctx.isServer) {
         config.externals = [
           nodeExternals({
@@ -77,6 +90,19 @@ module.exports = {
           })
         ]
       }
-    }
-  }
+      //add for vue2-google-maps
+      if (!ctx.isClient) {
+        // This instructs Webpack to include `vue2-google-maps`'s Vue files
+        // for server-side rendering
+        config.externals.splice(0, 0, function (context, request, callback) {
+          if (/^vue2-google-maps($|\/)/.test(request)) {
+            callback(null, false)
+          } else {
+            callback()
+          }
+        })
+      }
+    },
+    vendor:["vue2-google-maps"]
+  }, 
 }

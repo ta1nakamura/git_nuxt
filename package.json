@@ -9,6 +9,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
+    "heroku-postbuild": "npm run build",
     "test-api": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha api/**/**.test.js"
   },
   "dependencies": {
@@ -20,6 +21,7 @@
     "mongodb": "^3.1.1",
     "mongoose": "^5.2.6",
     "nuxt": "^1.0.0",
+    "vue2-google-maps": "^0.10.1",
     "vuetify": "^0.17.3"
   },
   "devDependencies": {
