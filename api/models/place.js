@@ -1,4 +1,14 @@
-// CarModel.js
+/**
+ * place.js
+ * { 
+ *    place_id    : 'prace name',
+ *    palace_name : 'palace name',
+ *    location    : { 
+ *       type        : 'type name', 
+ *       coordinates : [10 , 20]
+ *    }
+ * }
+ */
 
 // import mongoose from 'mongoose';
 var mongoose = require('mongoose')
@@ -27,7 +37,7 @@ const placeSchema = new Schema({
  }
 },{timestamp : true});
 
-const Car = mongoose.model('Place', placeSchema);
+const Place = mongoose.model('Place', placeSchema);
 
 // export default Car;
-module.exports = {Car}
+module.exports = {Place}

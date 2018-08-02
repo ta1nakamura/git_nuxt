@@ -4,17 +4,21 @@ const { ObjectID } = require("mongodb");
 
 const { path,app } = require("./../apptest");
 const { Todo } = require("./../models/todo");
+const { Place } = require("./../models/place")
 // const { User } = require("./../models/user");
-const { todos, populateTodos, users, populateUsers } = require("./seed/seed");
+const { todos, populateTodos, places, populatePlaces } = require("./seed/seed");
 
 // beforeEach(populateUsers);
-beforeEach(populateTodos);
+beforeEach(populatePlaces);
+// beforeEach(populateTodos);
 
-describe('Get Test /test/:id', () => {
-    it('should work [it]', (done) => {
+
+describe('Get Test /test/:id', function(){
+    this.timeout(10000);
+    it('should work [it]', function(done) {
         done();
     })
-    it('should get id',(done)=>{
+    it('should get id',function(done){
         request(app)
             .get(path+'/test/3')
             .expect(200)
