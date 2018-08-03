@@ -13,6 +13,7 @@
     "test-api": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha api/**/**.test.js"
   },
   "dependencies": {
+    "@google/maps": "^0.5.5",
     "@nuxtjs/axios": "^5.0.0",
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
