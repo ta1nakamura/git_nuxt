@@ -13,7 +13,11 @@
    - https://www.npmjs.com/package/vue2-google-maps
    - https://github.com/xkjyeah/vue-google-maps
    - https://www.youtube.com/watch?v=2QboO0zuZ2Q 
+- [official] Node.js  client library for Google Maps API Web Services
+   - https://github.com/googlemaps/google-maps-services-js
+   - https://qiita.com/chuck0523/items/bed2ec8cbc4fe2067364
 
+   
 ## Build Setup
 
 ``` bash
