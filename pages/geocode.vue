@@ -107,11 +107,13 @@ export default {
     },
     async onGeocode(){
       console.log('--[methods]')
-      let data = await this.$store.dispatch('getGeocode',{address:this.inputaddress, region:'us'})
+      let data = await this.$store.dispatch('getGeocode',{
+        address:this.inputaddress, region:this.selected_country.region })
       this.maplocation = data.geometry.location;
       this.reportedCenter = data.geometry.location;
       this.formatted_address = data.formatted_address
       // console.log('--maplocation',this.maplocation)
+      // this.$forceUpdate()
     }
   }
 };
