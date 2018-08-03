@@ -17,10 +17,13 @@ const createStore =()=>{
         actions:{
             nuxtServerInit(vuexContext,context){
             },
-            async getGeocode(vuexContext,inputAddress){
+            async getGeocode(vuexContext,inputdata){
                 // console.log('--[store]geocode')
                 try{
-                    let res = await googleMapsClient.geocode({ address:inputAddress }).asPromise();
+                    let res = await googleMapsClient.geocode({ 
+                        address:inputdata.address,
+                        region:inputdata.region
+                    }).asPromise();
                     // console.log(res.json.results)
                    
                     let formatted_address = res.json.results[0].formatted_address;
