@@ -26,41 +26,49 @@
       v-model="inputaddress"></v-text-field>
     </v-flex>
 </v-layout>
-
 <v-btn @click="onGeocode" color="secondary">goMap</v-btn>
 
+<!-- [output] -->
+<v-flex xs12 md5>
+  <!-- <p>input:{{inputaddress}} </p> -->
+  <p> Address  : {{formatted_address}} </p>
+  <p> Location : {{maplocation}}</p>
+  <!-- [repotedCenter] -->
+  <h3>Map information</h3> 
+  Map center : {{reportedCenter}} 
+  <!-- [googelmap] -->
+  <GmapMap class="map-panel" map-type-id="terrain" 
+    style="width: 100%; height: 300px"
+    @zoom_changed="update('zoom', $event)" 
+    @center_changed="update('reportedCenter', $event)"
+    :draggable="true"
+    :center="maplocation"
+    :zoom="zoom"
+    ref="mmm">
+    <GmapMarker 
+    :position = "reportedCenter" 
+    :clickable="true"  
+    :draggable="false"
+    @click="onMarkerClick"
+    />
+    <!-- <gmap-info-window 
+    :position="reportedCenter" 
+    :opened="true" 
+    :draggable="true"
+    style="font color:black">
+      <div style="color:black">test test</div>
+    </gmap-info-window> -->
 
-<!-- <p>input:{{inputaddress}} </p> -->
-<p> Address  : {{formatted_address}} </p>
-<p> Location : {{maplocation}}</p>
-<!-- [repotedCenter] -->
-<h3>Map information</h3> 
-Map center : {{reportedCenter}} 
-<!-- [googelmap] -->
-<GmapMap class="map-panel" map-type-id="terrain" style="width: 500px; height: 300px"
-@zoom_changed="update('zoom', $event)" 
-@center_changed="update('reportedCenter', $event)"
-:draggable="true"
-:center="maplocation"
-:zoom="zoom"
-ref="mmm"
->
-  <GmapMarker 
-  :position = "reportedCenter" 
-  :clickable="true"  
-  :draggable="false"
-  @click="onMarkerClick"
-  />
-  <!-- <gmap-info-window 
-  :position="reportedCenter" 
-  :opened="true" 
-  :draggable="true"
-  style="font color:black">
-    <div style="color:black">test test</div>
-  </gmap-info-window> -->
-
-</GmapMap>
-
+  </GmapMap>
+</v-flex>
+<!-- [sample xs12] -->
+    <v-layout row wrap align-center  justify-center class="text-xs-center" >
+        <v-flex v-for="i in 12" :key="`1${i}`" xs1>
+            <v-card dark color="glay">
+            <v-card-text class="px-0">{{i}}</v-card-text>
+            </v-card>
+        </v-flex>
+    </v-layout>
 
 <!-- [footer] -->
 <v-footer  app inset>
