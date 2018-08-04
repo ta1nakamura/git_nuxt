@@ -42,15 +42,23 @@ Map center : {{reportedCenter}}
 @center_changed="update('reportedCenter', $event)"
 :draggable="true"
 :center="maplocation"
-:zoom="15"
+:zoom="zoom"
+ref="mmm"
 >
-  <!-- <GmapMarker 
-  :position = "reportedCenter" :clickable="true"  :draggable="true"
+  <GmapMarker 
+  :position = "reportedCenter" 
+  :clickable="true"  
+  :draggable="false"
   @click="onMarkerClick"
-  /> -->
-  <gmap-info-window :position="reportedCenter" :opened="true" style="font color:black">
+  />
+  <!-- <gmap-info-window 
+  :position="reportedCenter" 
+  :opened="true" 
+  :draggable="true"
+  style="font color:black">
     <div style="color:black">test test</div>
-  </gmap-info-window>
+  </gmap-info-window> -->
+
 </GmapMap>
 
 
@@ -79,6 +87,7 @@ export default {
       maplocation:{lng: 100.52973, lat: 13.904549},
       //-update--
       reportedCenter: {lng: 100.52973, lat: 13.904549},
+      zoom:15,
     };
 
   },
@@ -106,14 +115,21 @@ export default {
       console.log('--click maerker')
     },
     async onGeocode(){
-      console.log('--[methods]')
-      let data = await this.$store.dispatch('getGeocode',{
+      console.log('--[methods] onGeocode')
+      try{
+        let data = await this.$store.dispatch('getGeocode',{
         address:this.inputaddress, region:this.selected_country.region })
-      this.maplocation = data.geometry.location;
-      this.reportedCenter = data.geometry.location;
-      this.formatted_address = data.formatted_address
+        this.maplocation = data.geometry.location;
+        this.reportedCenter = data.geometry.location;
+        this.$refs.mmm.panTo(data.geometry.location);
+        this.formatted_address = data.formatted_address
+      }catch(e){
+        console.log('--error',e)
+      }
+      
       // console.log('--maplocation',this.maplocation)
       // this.$forceUpdate()
+      
     }
   }
 };
