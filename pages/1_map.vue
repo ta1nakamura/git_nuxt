@@ -4,14 +4,23 @@
 <!-- [main] -->
 <v-content>
   <v-container fluid>
-  <h1> gis_nuxt sample </h1>
-  <pre>
-    1. 1_map     : googlemap 
-    2. 2_geocode : geocode , googlemap
-    3. place/_id : placeData read/write sample
-    testui : vuetify test
-  </pre>
-  
+  <h1>vue2-googlemap sample </h1>
+
+  <GmapMap
+  :center="{lng:100.52973,lat:13.904549}"
+  :zoom="15"
+  map-type-id="terrain"
+  style="width: 500px; height: 300px"
+  >
+  <GmapMarker
+      :key="index"
+      v-for="(m, index) in markers"
+      :position="m.position"
+      :clickable="true"
+      :draggable="true"
+      @click="center=m.position"
+  />
+  </GmapMap>
   </v-container>
 </v-content>
 <!-- [footer] -->
