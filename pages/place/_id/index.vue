@@ -27,6 +27,7 @@
     </v-flex>
 </v-layout>
 <v-btn @click="onGeocode" color="secondary">goMap</v-btn>
+<v-btn @click="onSave" color="indigo">save</v-btn>
 
 <!-- [output] -->
 <v-flex xs12 md5>
@@ -92,14 +93,51 @@ export default {
       selected_country:{name:'Thai', region:'th'},
       //-- output --
       formatted_address:'', 
-      maplocation:{lng: 100.52973, lat: 13.904549},
+      // maplocation:{lng: 100.52973, lat: 13.904549},
+      maplocation:null,
       //-update--
-      reportedCenter: {lng: 100.52973, lat: 13.904549},
+      reportedCenter:null,
       zoom:15,
     };
 
   },
+  asyncData(context){
+        console.log(context.params);
+        return context.app.$axios.$get('/api/places/'+context.params.id)
+        .then(data=>{
+            console.log(data);
+            return {
+              maplocation:{
+                lng:data.place.location.coordinates[0],
+                lat:data.place.location.coordinates[1]
+              },
+              reportedCenter: {
+                lng:data.place.location.coordinates[0],
+                lat:data.place.location.coordinates[1]
+              },
+              inputaddress:data.place.place_name
+              // editplace:data.place
+            };
+        })
+    },
   methods:{
+    onSave({params}){
+      console.log('--onSave',this.$route)
+      return this.$axios.patch(`/api/places/${this.$route.params.id}`,{
+          place_name : this.inputaddress,
+          location : { coordinates: [
+            this.reportedCenter.lng , 
+            this.reportedCenter.lat
+          ]}
+      })
+      .then(data=>{
+          console.log('--success--');
+          this.$router.push('/place')
+      }).catch(e=>{
+          console.log('--error--',e);
+          // this.$router.push('/shopadmin')
+      })
+    },
      update(field, event) {
       if (field === 'reportedCenter') {
         // N.B. It is dangerous to update this.center
@@ -138,7 +176,8 @@ export default {
       // console.log('--maplocation',this.maplocation)
       // this.$forceUpdate()
       
-    }
+    },
+
   }
 };
 </script>

@@ -9,6 +9,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
+    "dev-debug": "node --inspect-brk node_modules/nuxt/bin/nuxt",
     "heroku-postbuild": "npm run build",
     "test-api": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha api/**/**.test.js"
   },
@@ -19,6 +20,7 @@
     "cors": "^2.8.4",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
+    "lodash": "^4.17.10",
     "mongodb": "^3.1.1",
     "mongoose": "^5.2.6",
     "nuxt": "^1.0.0",

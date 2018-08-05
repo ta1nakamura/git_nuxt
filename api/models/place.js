@@ -19,21 +19,25 @@ const geoSchema = new Schema({
    default: 'Point'
  },
  coordinates: {
-   type: [Number]
+   type: [Number],
+   default: [0,0]
  }
 });
 
 const placeSchema = new Schema({
  place_id : {
    type : String,
-   required : [true, 'Place id is required']
+   required : [false, 'Place id is required'],
+   default:'new'
  },
  place_name : {
-   type : String
+   type : String,
+   default:'new place'
  },
  location : {
    type: geoSchema,
-   index: '2dsphere'
+   index: '2dsphere',
+   default: geoSchema
  }
 },{timestamp : true});
 
