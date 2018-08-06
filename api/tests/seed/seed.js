@@ -3,23 +3,10 @@ const { ObjectID } = require("mongodb");
 /** MongoDB and Models */
 var { mongoose } = require('./../../db/mongoose');
 
-const { Todo } = require("./../../models/todo")
 const { Place } = require("./../../models/place")
 
 const userOneId = new ObjectID();
 const userTwoId = new ObjectID();
-
-const todos = [{
-    _id: new ObjectID(),
-    text: 'First test tod',
-    _creator: userOneId
-}, {
-    _id: new ObjectID(),
-    text: 'Second test tod',
-    completed: true,
-    completedAt: 333,
-    _creator: userTwoId
-}]
 
 const places=[{
     // _id : new ObjectID() ,
@@ -34,13 +21,7 @@ const places=[{
 }]
 const place1 = new Place(places[0])
 
-const populateTodos = function(done){
-    console.log('--populateTodo')
-    this.timeout(10000); // change timeout 10sec
-    Todo.remove({}).then(() => {
-        return Todo.insertMany(todos);
-    }).then(() => done());
-}
+
 const  populatePlaces = async function()  {
     this.timeout(10000); // change timeout 10sec
     await Place.remove({});
@@ -49,10 +30,6 @@ const  populatePlaces = async function()  {
 
 
 module.exports = {
-    todos,
-    populateTodos,
     places,
     populatePlaces,
-    // users,
-    // populateUsers
 }
