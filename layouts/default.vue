@@ -6,6 +6,7 @@
       <!-- *manu -->
       <v-btn to='/place'>place admin </v-btn>
 
+      <v-btn to='/3_currentPosition'>3_current</v-btn>
       <v-btn to='/2_geocode'>2_geocode</v-btn>
       <v-btn to='/1_map'>1_map</v-btn>
       
