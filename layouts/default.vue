@@ -2,19 +2,51 @@
   <v-app dark>  
     <!-- [toolbar] -->
     <v-toolbar dark color="primary">
-      <v-toolbar-side-icon to='/'></v-toolbar-side-icon>
+      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <!-- *manu -->
       <v-btn to='/place'>place admin </v-btn>
-
       <v-btn to='/3_currentPosition'>3_current</v-btn>
-      <v-btn to='/2_geocode'>2_geocode</v-btn>
-      <v-btn to='/1_map'>1_map</v-btn>
-      
-      <v-btn to='/testui'>test-ui</v-btn>
-      
       <v-toolbar-title class="white--text">title</v-toolbar-title>
       <v-spacer></v-spacer>
     </v-toolbar>
+    <!-- ***[Left Menu]***  -->
+    <v-navigation-drawer fixed v-model="drawer"  app>
+      <!-- [User left] -->
+      <v-toolbar flat @click.stop="drawer = !drawer">
+        <v-list>
+          <v-list-tile>
+            <v-list-tile avatar>
+              <v-list-tile-avatar>
+                <!-- <img v-if="currentUser" :src="currentUser.picture">
+                <v-icon v-else medium>account_circle</v-icon> -->
+                <v-icon  medium>account_circle</v-icon>
+              </v-list-tile-avatar>
+              <v-list-tile-content>
+                <v-list-tile-title class="title">
+                  <!-- <span v-if="currentUser">{{currentUser.displayname}}</span>
+                  <span v-else>No Sigin</span> -->
+                  <span>No Sigin</span>
+                </v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+          </v-list-tile>
+        </v-list>
+      </v-toolbar>
+  
+      <!-- [Items Menus [Home,Feature,Contact]]-->
+      <v-list dense class="pt-0">
+          <v-list-tile v-for="item in items" :key="item.title" :to="item.url">
+          <v-list-tile-action>
+              <v-icon>{{ item.icon }}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+              <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+          </v-list-tile-content>
+          </v-list-tile>
+      </v-list>
+    </v-navigation-drawer> 
+
+      <!-- ***[contents]*** -->
       <nuxt />
   </v-app>
 </template>
@@ -23,7 +55,16 @@
   export default {
     data() {
       return {
-   
+        drawer: null,
+        items: [
+          { title: 'HOME'      , icon: 'home'        , url: '/' },
+          { title: 'Admin'     , icon: 'assignment'  , url: '/place' },
+          { title: '3_Current' , icon: 'gps_fixed'   , url: '/3_currentPosition' },
+          { title: '2_GeoCode' , icon: 'text_fields' , url: '/2_geocode' },
+          { title: '1_Map'     , icon: 'map'         , url: '/1_map' },
+          { title: 'Testui'    , icon: 'build'       , url: '/testui' },
+          
+        ],
       }
     }
   }

@@ -1,19 +1,29 @@
 <template>
 <div>
-    <v-btn @click="onClickCurrent" >getCurrentPosition</v-btn>
-    <p>{{currentLoc.coords}}</p>
+<!-- [main contents] -->
+<v-content>
+<v-container fluid>
+    <v-flex xs12 md5>
+        <v-btn @click="onClickCurrent" >getCurrentPosition</v-btn>
+        <p>{{currentLoc.coords}}</p>
 
-    <GmapMap class="map-panel" map-type-id="terrain" 
-        style="width: 100%; height: 300px"
-        :draggable="true"
-        :center="maplocation"
-        :zoom="15"
-        ref="mmm">
-        <GmapMarker 
-        :position = "maplocation" 
-        />
-
-    </GmapMap>
+        <GmapMap class="map-panel" map-type-id="terrain" 
+            style="width: 100%; height: 300px"
+            :draggable="true"
+            :center="maplocation"
+            :zoom="15"
+            ref="mmm">
+            <GmapMarker 
+            :position = "maplocation" 
+            />
+        </GmapMap>
+    </v-flex>
+</v-container>
+</v-content>    
+<!-- [footer] -->
+<v-footer  app inset>
+    <span class="white--text">&copy; 2018 footer</span>
+</v-footer>
 </div>
 </template>
 

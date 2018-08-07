@@ -21,7 +21,7 @@
       single-line
       ></v-select>
     </v-flex>
-    <v-flex xs4>
+    <v-flex xs9 sm6 md3>
       <v-text-field label="input address" 
       v-model="inputaddress"></v-text-field>
     </v-flex>
