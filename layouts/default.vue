@@ -4,10 +4,15 @@
     <v-toolbar dark color="primary">
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <!-- *manu -->
-      <v-btn to='/place'>place admin </v-btn>
-      <v-btn to='/3_currentPosition'>3_current</v-btn>
-      <v-toolbar-title class="white--text">title</v-toolbar-title>
+      <v-toolbar-title class="white--text">gis sample</v-toolbar-title>
       <v-spacer></v-spacer>
+      <v-toolbar-items class="hidden-sm-and-down">
+          <v-btn flat v-for="item in items" :key="item.title" :to="item.url">
+            {{ item.title }}
+          </v-btn>
+      </v-toolbar-items>
+      
+     
     </v-toolbar>
     <!-- ***[Left Menu]***  -->
     <v-navigation-drawer fixed v-model="drawer"  app>
