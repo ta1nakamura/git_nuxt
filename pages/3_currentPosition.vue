@@ -4,7 +4,7 @@
 <v-content>
 <v-container fluid>
     <v-flex xs12 md5>
-        <v-btn @click="onClickCurrent" >getCurrentPosition</v-btn>
+        <v-btn @click="onClickCurrent" color="secondary">getCurrentPosition</v-btn>
         <p>{{currentLoc.coords}}</p>
 
         <GmapMap class="map-panel" map-type-id="terrain" 
