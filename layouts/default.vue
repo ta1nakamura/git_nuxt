@@ -63,7 +63,7 @@
         drawer: null,
         items: [
           { title: 'HOME'      , icon: 'home'        , url: '/' },
-          { title: 'Admin'     , icon: 'assignment'  , url: '/place' },
+          { title: 'PlaceList'     , icon: 'assignment'  , url: '/place' },
           { title: '3_Current' , icon: 'gps_fixed'   , url: '/3_currentPosition' },
           { title: '2_GeoCode' , icon: 'text_fields' , url: '/2_geocode' },
           { title: '1_Map'     , icon: 'map'         , url: '/1_map' },
