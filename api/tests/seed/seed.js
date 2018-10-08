@@ -10,12 +10,12 @@ const userTwoId = new ObjectID();
 
 const places=[{
     // _id : new ObjectID() ,
-    place_id : '001',
+    place_id : 'seed-001',
     place_name : 'Software Park',
     location:{ type:'Point', coordinates:[ 100.529730,13.904549,]}
 },{
     _id : new ObjectID() ,
-    place_id : '002',
+    place_id : 'seed-002',
     place_name : 'CentralPlaza Changwattana',
     location:{ type:'Point', coordinates:[100.527834,13.903676 ]}
 }]
