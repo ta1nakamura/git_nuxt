@@ -1,11 +1,8 @@
 require('../config/config.js')
-const { ObjectID } = require("mongodb")
 const { mongoose } = require("../db/mongoose");
 const { Place } = require("../models/place");
 
-const placeOneId = new ObjectID();
-const placeTwoId = new ObjectID();
-//ref
+//サンプルデータ定義
 // http://gihyo.jp/dev/serial/01/mongodb/0009
 const places=[
   { place_id : '1', place_name : '五反田',  location:{ type:'Point', coordinates:[ 139.723822, 35.625974 ]}},
@@ -16,9 +13,8 @@ const places=[
   { place_id : '6', place_name : '上野',    location:{ type:'Point', coordinates:[ 139.777043, 35.713790 ]}},
   { place_id : '7', place_name : '品川',    location:{ type:'Point', coordinates:[ 139.738999, 35.628760 ]}}
 ]
-// init
+// テーブル初期化
 async function populatePlaces()  {
-  // this.timeout(10000); // change timeout 10sec
   await Place.deleteMany({});
   await Place.insertMany(places);
 }
