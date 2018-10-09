@@ -64,6 +64,7 @@
         items: [
           { title: 'HOME'      , icon: 'home'        , url: '/' },
           { title: 'PlaceList'     , icon: 'assignment'  , url: '/place' },
+          { title: '4_nearplace' , icon: 'near_me'   , url: '/4_nearplace' },
           { title: '3_Current' , icon: 'gps_fixed'   , url: '/3_currentPosition' },
           { title: '2_GeoCode' , icon: 'text_fields' , url: '/2_geocode' },
           { title: '1_Map'     , icon: 'map'         , url: '/1_map' },

@@ -81,7 +81,7 @@ async function main(){
   // }
   // await near(0,4000)
   //--距離が必要な場合(aggregate)
-  await geonear(3, [139.701238, 139.701238]) //渋谷駅　[long,lat]
+  await geonear(3, [139.701238, 35.658871]) //渋谷駅　[long,lat]
   console.log('*** End ***')
 }
 main()
