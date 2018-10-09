@@ -4,14 +4,12 @@
  *    place_id    : 'prace name',
  *    palace_name : 'palace name',
  *    location    : { 
- *       type        : 'type name', 
+ *       type        : 'Point', 
  *       coordinates : [10 , 20]
  *    }
  * }
  */
-
-// import mongoose from 'mongoose';
-var mongoose = require('mongoose')
+const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 const geoSchema = new Schema({
   type        : { type : String   , default : 'Point'},
@@ -26,6 +24,4 @@ const placeSchema = new Schema({
 });
 
 const Place = mongoose.model('Place', placeSchema);
-
-// export default Car;
 module.exports = {Place}

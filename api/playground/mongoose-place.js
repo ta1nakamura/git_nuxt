@@ -38,7 +38,7 @@ async function getWihin(distance){
 }
 //Near
 //今回は渋谷駅[ 139.701238, 35.658871 ]から近い順に
-async function near(min, max){
+async function near(min, max,){
   console.log('---start--', near.name)
   const results = await Place.find({
     'location':{$nearSphere:{
@@ -52,13 +52,15 @@ async function near(min, max){
   })
   console.log(results.map( v=>v.place_name ))
 }
+
 //GeoNear(aggregate) 距離を含む情報
 //https://mongoosejs.com/docs/api.html#aggregate_Aggregate-near
-async function geonear(limit){
+async function geonear(limit, coordinates){
   console.log('---start--', geonear.name)
   const results = await Place.aggregate()
   .near({
-    near: { type : "Point", coordinates: [139.701238, 35.658871] },  //渋谷駅
+    // near: { type : "Point", coordinates: [139.701238, 35.658871] },  //渋谷駅
+    near: { type : "Point", coordinates },  //渋谷駅
     spherical: true, 
     distanceField: "distance", //メートル
   })
@@ -79,7 +81,7 @@ async function main(){
   // }
   // await near(0,4000)
   //--距離が必要な場合(aggregate)
-  await geonear(3)
+  await geonear(3, [139.701238, 139.701238]) //渋谷駅　[long,lat]
   console.log('*** End ***')
 }
 main()
