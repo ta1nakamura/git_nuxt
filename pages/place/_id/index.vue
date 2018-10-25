@@ -42,8 +42,8 @@
           <h3>Map information</h3> 
           Map center : {{ reportedCenter }} 
           <!-- [googelmap] -->
-          <GmapMap :draggable="true" :center="maplocation" 
-                   ref="mmm"
+          <GmapMap ref="mmm" :draggable="true" 
+                   :center="maplocation"
                    :zoom="zoom" 
                    class="map-panel"
                    map-type-id="terrain"
@@ -125,7 +125,7 @@ export default {
       })
   },
   methods: {
-    onSave({ params }) {
+    onSave() {
       console.log("--onSave", this.$route)
       return this.$axios
         .patch(`/api/places/${this.$route.params.id}`, {
@@ -134,7 +134,7 @@ export default {
             coordinates: [this.reportedCenter.lng, this.reportedCenter.lat]
           }
         })
-        .then(data => {
+        .then(() => {
           console.log("--success--")
           this.$router.push("/place")
         })

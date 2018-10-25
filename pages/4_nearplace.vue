@@ -30,8 +30,8 @@
           <h3>Map information</h3> 
           Map center : {{ reportedCenter }} 
           <!-- [googelmap] -->
-          <GmapMap :draggable="true" :center="maplocation" 
-                   ref="mmm"
+          <GmapMap ref="mmm" :draggable="true" 
+                   :center="maplocation"
                    :zoom="zoom" 
                    class="map-panel"
                    map-type-id="terrain"
@@ -44,7 +44,7 @@
     :draggable="false"
     @click="onMarkerClick"
     /> -->
-            <GmapMarker v-for="item in this.stations" :key="item._id"
+            <GmapMarker v-for="item in stations" :key="item._id"
                         :position="{ lng:item.location.coordinates[0], lat:item.location.coordinates[1]}" 
                         :clickable="true" :draggable="true"
             />
@@ -54,7 +54,7 @@
           </GmapMap>
           <v-card>
             <h3>Result Place</h3>  
-            <v-list-tile v-for="(item,i) in this.stations" :key="item._id">
+            <v-list-tile v-for="(item,i) in stations" :key="item._id">
               <v-list-tile-content>
                 {{ i }} : {{ item.place_name }} : {{ Math.round(item.distance).toString().replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,' ) }} m
               </v-list-tile-content>
@@ -78,7 +78,7 @@ export default {
       selected_country: { name: "Thai", region: "th" },
       //-- output --
       formatted_address: "",
-      //[ 139.701238, 35.658871 ] 渋谷駅　[long,lat]
+      //[ 139.701238, 35.658871 ] 渋谷駅[long,lat]
       maplocation: { lng: 139.701238, lat: 35.658871 },
       // maplocation:null,
       //-update--

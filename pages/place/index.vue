@@ -73,7 +73,7 @@ export default {
       if (this.newPlaceName == null) return
       console.log("--createPlace:", this.newPlaceName)
       try {
-        const res = await this.$axios.post("/api/places", {
+        await this.$axios.post("/api/places", {
           place_name: this.newPlaceName
         })
         this.newPlaceName = null
@@ -89,7 +89,7 @@ export default {
     async onDeletePlace(place) {
       console.log("--onDeleteShop")
       try {
-        const res = await this.$axios.delete("/api/places/" + place._id)
+        await this.$axios.delete("/api/places/" + place._id)
         console.log("--success delete Shop--")
         // reload ShopList
         let res2 = await this.$axios.$get("/api/places")

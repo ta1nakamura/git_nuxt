@@ -4,7 +4,7 @@ const _ = require("lodash")
 require("./config/config.js") //config for mongodb,
 /** MongoDB and Models */
 const { ObjectID } = require("mongodb")
-var { mongoose } = require("./db/mongoose")
+require("./db/mongoose")
 const { Place } = require("./models/place")
 
 const router = express.Router()
@@ -77,7 +77,7 @@ router.get("/places/:id", (req, res) => {
       }
       return res.status(200).send({ place })
     })
-    .catch(e => {
+    .catch(() => {
       return res.status(400).send()
     })
 })
@@ -109,7 +109,7 @@ router.patch("/places/:id", (req, res) => {
       console.log("--result", place)
       res.send({ place })
     })
-    .catch(e => {
+    .catch(() => {
       res.status(400).send()
     })
 })

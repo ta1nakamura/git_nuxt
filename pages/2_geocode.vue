@@ -37,8 +37,8 @@
           <h3>Map information</h3> 
           Map center : {{ reportedCenter }} 
           <!-- [googelmap] -->
-          <GmapMap :draggable="true" :center="maplocation" 
-                   ref="mmm"
+          <GmapMap ref="mmm" :draggable="true" 
+                   :center="maplocation"
                    :zoom="zoom" 
                    class="map-panel"
                    map-type-id="terrain"

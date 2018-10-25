@@ -1,9 +1,10 @@
 const expect = require("expect")
 const request = require("supertest")
-const { ObjectID } = require("mongodb")
+// const { ObjectID } = require("mongodb")
+require("mongodb")
 
 const { path, app } = require("./../apptest")
-const { Place } = require("./../models/place")
+// const { Place } = require("./../models/place")
 const { places, populatePlaces } = require("./seed/seed")
 
 beforeEach(populatePlaces)

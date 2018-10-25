@@ -1,7 +1,7 @@
 const { ObjectID } = require("mongodb")
 // const jwt = require("jsonwebtoken")
 /** MongoDB and Models */
-var { mongoose } = require("./../../db/mongoose")
+require("./../../db/mongoose")
 
 const { Place } = require("./../../models/place")
 

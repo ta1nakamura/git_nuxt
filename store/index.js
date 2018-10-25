@@ -13,7 +13,7 @@ const createStore = () => {
     },
     mutations: {},
     actions: {
-      nuxtServerInit(vuexContext, context) {},
+      // nuxtServerInit(vuexContext, context) {},
       async getGeocode(vuexContext, inputdata) {
         // console.log('--[store]geocode')
         try {

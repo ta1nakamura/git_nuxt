@@ -1,5 +1,5 @@
 require("../config/config.js")
-const { mongoose } = require("../db/mongoose")
+require("../db/mongoose")
 const { Place } = require("../models/place")
 
 //サンプルデータ定義
@@ -105,16 +105,16 @@ async function main() {
   console.log("*** start ***")
   await populatePlaces()
   //--すべてのデータ取得
-  // await findAll()
+  await findAll()
   //--範囲取得
-  // await getWihin(0.0005)
+  await getWihin(0.0005)
   // for (let maxd = 0; maxd <= 5000; maxd +=500) {
   //   console.log('maxd:',maxd)
   //   await near(0,maxd)
   // }
-  // await near(0,4000)
+  await near(0, 4000)
   //--距離が必要な場合(aggregate)
-  await geonear(3, [139.701238, 35.658871]) //渋谷駅　[long,lat]
+  await geonear(3, [139.701238, 35.658871]) //渋谷駅[long,lat]
   console.log("*** End ***")
 }
 main()

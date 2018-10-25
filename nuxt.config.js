@@ -8,10 +8,11 @@ const nodeExternals = require("webpack-node-externals")
 
 //setBaseURL for Axios
 var env = process.env.NODE_ENV || "development"
+let API_URL
 if (env === "development" || env === "test") {
-  var API_URL = "http://localhost:3000"
+  API_URL = "http://localhost:3000"
 } else {
-  var API_URL = process.env.API_URL
+  API_URL = process.env.API_URL
 }
 module.exports = {
   mode: "universal",
